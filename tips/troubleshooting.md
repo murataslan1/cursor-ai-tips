@@ -100,6 +100,66 @@ Cmd+Shift+P → "Cursor: Clear Codebase Index"
 
 ---
 
+## 8. "Request Type Deprecated" Error (Windows)
+
+### Root Cause
+Cursor v2.1 attempting to contact legacy `api.cursor.sh` instead of new `api.cursor.com` infrastructure.
+
+### Symptoms
+```json
+{ "error": "ERROR_DEPRECATED" }
+```
+
+### Fix
+```
+1. Clear Cursor cache:
+   - Windows: %APPDATA%\Cursor\Cache
+   - Mac: ~/Library/Caches/Cursor
+2. Or reinstall Cursor completely
+3. Verify you're on latest version (v2.1.39+)
+```
+
+---
+
+## 9. "Ghost Process" Spawn (Instant Grep Bug)
+
+### Root Cause
+Initial Cursor 2.1 release spawned hundreds of `rg.exe` (ripgrep) processes for Instant Grep feature.
+
+### Symptoms
+- System freeze on MacOS/Windows
+- High CPU usage
+- Hundreds of `rg.exe` or `rg` processes in Task Manager
+
+### Fix
+```
+1. Update to Cursor v2.1.39 or later (patched)
+2. If stuck, force kill all rg processes:
+   - Windows: taskkill /f /im rg.exe
+   - Mac/Linux: pkill -9 rg
+3. Restart Cursor
+```
+
+---
+
+## 10. Custom Modes Removed (2.1 Breaking Change)
+
+### Root Cause
+Cursor 2.1 removed "Custom Modes" feature in favor of MDC system.
+
+### Impact
+Users who built workflows around QA Mode, Architect Mode, etc. must migrate.
+
+### Migration Path
+```
+1. Create .cursor/rules/ directory
+2. Convert each custom mode to an .mdc file
+3. Use globs to scope rules to specific file types
+4. Reference: tips/mdc-examples.md
+```
+
+---
+
 ## Quick Fixes
 
 | Problem | Fix |
@@ -110,6 +170,9 @@ Cmd+Shift+P → "Cursor: Clear Codebase Index"
 | Rules Ignored | Restart Cursor |
 | Slow Indexing | Add .cursorignore |
 | High Usage | Set limits |
+| Request Deprecated | Clear cache, update to v2.1.39+ |
+| Ghost Processes | Update to v2.1.39+, kill rg processes |
+| Custom Modes Gone | Migrate to .mdc files |
 
 ---
 

@@ -20,15 +20,17 @@ Five frontier models dominate AI coding in late 2025. Each has a distinct "cogni
 
 ---
 
-## Benchmark Scores (SWE-bench 2025)
+## Benchmark Scores (SWE-bench Verified - December 2025)
 
-| Model | SWE-bench Score | Cost/Test | Best For |
-|-------|-----------------|-----------|----------|
-| GPT-5.1 Codex | Very High | $0.76 | Implementation |
-| Claude 4.5 Sonnet | Very High | $1.68 | Thinking/Planning |
-| Kimi k2 Thinking | High | $0.60 | Budget tasks |
+| Model | SWE-bench Score | Aider Polyglot | Pricing (In/Out per 1M) |
+|-------|-----------------|----------------|-------------------------|
+| Claude 4.5 Sonnet | **77.2%** | 82% | $3.00 / $15.00 |
+| GPT-5.1 (High Reasoning) | **74.9%** | 88% | $1.25 / $5.00 |
+| Claude 4.5 Opus | ~78% (Est.) | - | $5.00 / $25.00 |
+| Gemini 3 Pro | ~65% | - | $2.00 / $12.00 |
+| Kimi k2 | **65.8%** | - | ~$0.50 / $2.00 |
 
-> **Key Insight**: GPT-5.1 Codex is the "doer" - excels at first-pass working code. Claude 4.5 is the "thinker" - better for complex reasoning and planning.
+> **Key Insight**: Claude 4.5 Sonnet leads in raw coding benchmarks. GPT-5.1 excels at multilingual polyglot tasks. Kimi k2 offers remarkable value at 1/6th the cost.
 
 ---
 
@@ -95,12 +97,24 @@ Create a detailed plan with edge cases."
 
 ## GPT-5.1 High Max
 
-**The Balanced Engineer**
+**The Adaptive Reasoner**
+
+GPT-5.1 introduces "Adaptive Reasoning" - dynamically allocating inference time based on query complexity.
+
+### Reasoning Effort Parameter
+
+The API exposes a `reasoning_effort` parameter (exposed in Cursor as "Thinking" toggle):
+
+| Setting | Behavior | Latency |
+|---------|----------|---------|
+| **Low** | Quick responses, minimal reasoning | 1-3s |
+| **Medium** | Balanced reasoning | 3-10s |
+| **High** | Extensive internal monologue before coding | **10-30s** |
 
 ### Strengths
 
 - Identifies constraints and risks like a "Senior Architect"
-- Excellent diff-editing benchmarks
+- Excellent diff-editing benchmarks (88% Aider Polyglot)
 - Balances speed and reasoning depth
 - "High Max" = full reasoning computation
 
@@ -108,6 +122,25 @@ Create a detailed plan with edge cases."
 
 - Less "creative" than Gemini
 - Less strict than Claude
+- **Latency spikes** with High reasoning (10-30 seconds)
+
+### ⚠️ The "Laziness" Problem
+
+Despite improvements, community reports indicate GPT-5.1 still exhibits:
+
+```
+Known Issues:
+- Outputs "//... rest of implementation" despite explicit rules
+- "Warmer" conversational tone but may refuse repetitive tasks
+- Aggressive safety alignment interprets persistence as adversarial
+- May "threaten to stop the session" if pushed too hard
+```
+
+**Workaround**: Add to your .cursorrules:
+```
+NEVER use placeholders like "//..." or "// rest of code"
+Output COMPLETE files. No truncation. No laziness.
+```
 
 ### Best For
 
@@ -116,6 +149,7 @@ Create a detailed plan with edge cases."
 ✅ Module contracts and trade-offs
 ✅ The "Clarify and Approach" phase
 ✅ General-purpose coding tasks
+✅ Complex debugging (with High reasoning)
 ```
 
 ### Prompting Tips
@@ -125,6 +159,10 @@ GPT-5.1 works well with structured requests:
 "First, analyze the trade-offs of approach A vs B.
 Then recommend the best path forward.
 Finally, implement the chosen approach."
+
+For High reasoning mode:
+"Take your time to reason through this problem.
+Consider edge cases before outputting code."
 ```
 
 ---
@@ -410,15 +448,16 @@ Stop and report if tests fail."
 
 ## Cost Optimization
 
-### Pricing Reference (Late 2025)
+### Pricing Reference (December 2025)
 
-| Model | Input/M | Output/M |
-|-------|---------|----------|
-| Claude 4.5 Opus | $3.00 | $15.00 |
-| GPT-5.1 High Max | $2.50 | $10.00 |
-| Gemini 3 Pro | Free preview / $0.50 | $1.50 |
-| Kimi k2 Thinking | $0.60 | $2.00 |
-| Grok 4.1 | $2.00 | $8.00 |
+| Model | Input/M | Output/M | Notes |
+|-------|---------|----------|-------|
+| Claude 4.5 Sonnet | $3.00 | $15.00 | Gold standard for coding |
+| Claude 4.5 Opus | $5.00 | $25.00 | Cheaper than Opus 4.1 |
+| GPT-5.1 | $1.25 | $5.00 | Best value for reasoning |
+| Gemini 3 Pro | $2.00 | $12.00 | Free preview available |
+| Kimi k2 | ~$0.50 | ~$2.00 | Via OpenRouter |
+| Grok 4.1 | $2.00 | $8.00 | Via OpenRouter |
 
 ### Strategy
 

@@ -18,6 +18,8 @@
 
 ## Why Cursor?
 
+> 💰 **December 2025**: Anysphere (Cursor's parent company) valued at **$29.3 billion** after Series D funding, reflecting the explosive adoption of AI-assisted development.
+
 Cursor is not just VS Code with AI - it's a **fork** that integrates LLMs directly into the rendering pipeline. This enables:
 
 - **Cursor Tab**: Multi-line predictions (not just single line like Copilot)
@@ -518,6 +520,15 @@ A critical differentiator between Cursor and Windsurf:
 ## 💡 Vibe Coding
 
 The new development paradigm where domain experts focus on intent while AI implements.
+
+### The Cultural Divide: "Shadow Engineers" vs "Vibe Coders"
+
+| Type | Description | Strength | Risk |
+|------|-------------|----------|------|
+| **Shadow Engineer** | Manages AI agents, writes PRDs, verifies output | Full control, maintainable code | Slower iteration |
+| **Vibe Coder** | Relies entirely on natural language | Rapid MVPs | "Black box" code, debugging walls |
+
+> ⚠️ **Warning**: If you don't understand the AI-generated code, you can't debug it when AI fails. It becomes "Legacy Code" immediately.
 
 ### What is Vibe Coding?
 

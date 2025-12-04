@@ -38,7 +38,18 @@ Best for: Team-shared resources, cloud services
 
 ## Configuration: mcp.json
 
-Place in project root or `.cursor/`:
+### File Location
+
+As of Cursor 2.1, the recommended location is `.cursor/mcp.json` (project-specific):
+
+```bash
+mkdir -p .cursor
+touch .cursor/mcp.json
+```
+
+> **Note**: Project root `mcp.json` still works for backward compatibility, but `.cursor/mcp.json` is preferred for isolation.
+
+### Basic Structure
 
 ```json
 {
@@ -160,22 +171,34 @@ Place in project root or `.cursor/`:
 
 ---
 
-## Example: Playwright (E2E Testing)
+## Example: Playwright (E2E Testing) - "PlayWhite"
 
 The most transformative MCP application - enables "Self-Healing Tests."
+
+> 💡 **"PlayWhite"** is the community nickname for Playwright MCP. As one user put it: *"UTILIZEM PLAYWHITE, É RAPIDO, FACIL E BOM DEMAIS"* (Use PlayWhite, it's fast, easy and amazing!)
+
+### Configuration (.cursor/mcp.json)
 
 ```json
 {
   "mcpServers": {
     "playwright": {
       "command": "npx",
-      "args": ["@playwright/mcp@latest"]
+      "args": [
+        "-y",
+        "@playwright/mcp@latest"
+      ],
+      "env": {
+        "PLAYWRIGHT_BROWSERS_PATH": "0"
+      }
     }
   }
 }
 ```
 
-### The Autofix Workflow
+> **Important**: `PLAYWRIGHT_BROWSERS_PATH: "0"` ensures browsers are downloaded to the default location, avoiding path issues.
+
+### The Autofix Workflow (Shadow Engineering)
 
 ```
 1. Context Injection: User provides URL (localhost) or test file
@@ -183,6 +206,20 @@ The most transformative MCP application - enables "Self-Healing Tests."
 3. Perception: Agent captures DOM, console errors, screenshots
 4. Remediation: If test fails, Agent analyzes and fixes code
 5. Verification: Agent re-runs test to confirm fix
+```
+
+### Why "Shadow Engineering"?
+
+This workflow allows a single developer to maintain a test suite that would typically require a dedicated QA engineer:
+
+```
+Before PlayWhite:
+- Test breaks → Developer manually debugs → Hours lost
+- Selector changed → Manual inspection → Context switching
+
+After PlayWhite:
+- Test breaks → Agent identifies #submit-btn renamed to #login-btn
+- Agent edits login.spec.ts → Re-runs test → Minutes, not hours
 ```
 
 ### Usage Examples
