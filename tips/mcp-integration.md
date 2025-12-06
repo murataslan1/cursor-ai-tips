@@ -167,7 +167,38 @@ touch .cursor/mcp.json
 - **Server error**: Test manually with `npx -y @modelcontextprotocol/server-postgres $DATABASE_URL`
 - **Permissions**: Check env vars are set correctly
 
----
+### Path Resolution Failures (Common Issue)
+
+MCP servers often fail with "Red Light" errors due to relative path issues when launching from different working directories.
+
+**Symptoms**:
+```
+Error: Could not find playwright.config.ts
+Connection status: Red Light
+```
+
+**Fix**: Create a wrapper script:
+
+```bash
+#!/bin/bash
+# playwright-test-wrapper.sh
+cd "$(dirname "$0")"
+npx playwright test "$@"
+```
+
+Update `mcp.json` to use the wrapper:
+
+```json
+{
+  "mcpServers": {
+    "playwright": {
+      "command": "./playwright-test-wrapper.sh"
+    }
+  }
+}
+```
+
+**Reference**: [GitHub Issue #37739](https://github.com/microsoft/playwright/issues/37739)
 
 ---
 

@@ -10,7 +10,7 @@
 
 *Keyboard shortcuts, Composer workflows, .cursorrules examples, and Reddit community wisdom*
 
-[Shortcuts](#-keyboard-shortcuts) • [Composer](#-composer-mode) • [Context](#-context-management) • [Rules](#-cursorrules) • [Models](#-model-selection) • [MCP](#-mcp-integration) • [Security](#-security-concerns) • [Troubleshooting](#-troubleshooting) • [Reddit Tips](#-reddit-community-wisdom)
+[Shortcuts](#-keyboard-shortcuts) • [Composer](#-composer-mode) • [Context](#-context-management) • [Rules](#-cursorrules) • [Models](#-model-selection) • [MCP](#-mcp-integration) • [Security](#-security-concerns) • [Troubleshooting](#-troubleshooting) • [Reddit Tips](#-reddit-community-wisdom) • [GPT-5.1 Guide](#-gpt-51-codex-guide) • [Known Bugs](#-known-bugs-dec-2025)
 
 </div>
 
@@ -553,6 +553,135 @@ Vibe Coding: Developer describes intent → AI implements → Developer reviews
 ```
 
 [→ Full Vibe Coding Guide](tips/vibe-coding-guide.md)
+
+---
+
+## 🧬 GPT-5.1 Codex Guide
+
+The deployment of GPT-5.1 Codex (December 2025) introduced new capabilities and quirks.
+
+### The "Stupidity" Paradox
+
+The new "smart" model sometimes behaves "stupidly" due to **over-reasoning** and safety alignment:
+
+- Over-analyzes simple requests
+- Hallucinated constraints (e.g., insisting VPS is required)
+- Conservative refusals on legitimate security utilities
+
+### Model Arbitrage Strategy
+
+```
+Complex Architecture Planning → GPT-5.1 Codex Max (expensive)
+Implementation Details       → Gemini 3 Pro or Claude Sonnet (cheaper)
+```
+
+### Key Insight
+
+**Use Composer over raw chat** — Cursor's agent harness improves model behavior significantly.
+
+[→ Full GPT-5.1 Codex Guide](tips/gpt51-codex-guide.md)
+
+---
+
+## 🎯 Confidence Scoring (Anti-Hallucination)
+
+A powerful technique to combat AI hallucinations:
+
+```
+"Fix this only if you are 100% confident. Tell me your confidence score."
+```
+
+This prompt bypasses the "helpful assistant" persona and accesses the model's raw probability assessment, forcing it to:
+
+1. Re-evaluate its own logic
+2. Search for actual evidence
+3. Admit uncertainty instead of hallucinating
+
+[→ Full Confidence Scoring Guide](tips/confidence-scoring.md)
+
+---
+
+## 🐛 Known Bugs (Dec 2025)
+
+### CRITICAL: "Plan" Disconnect Bug
+
+UI shows diffs but files are never written to disk. **Always verify file timestamps after accepting changes.**
+
+```bash
+ls -la --time=modified <filename>
+git diff
+```
+
+### Other Issues
+
+| Bug | Severity | Status |
+|-----|----------|--------|
+| Plan mode not writing files | CRITICAL | Open |
+| Todo List corruption | CRITICAL | Open |
+| Ghost Process spawn (rg.exe) | HIGH | Fixed in v2.1.39 |
+| Context Decay | MEDIUM | Workaround: Session Reset |
+| PowerShell variable expansion | MEDIUM | Manual escaping required |
+
+[→ Full Known Bugs Guide](tips/known-bugs-dec2025.md)
+
+---
+
+## 🌐 Google Antigravity
+
+New competitor capturing "Early Adopter" mindshare with **parallel agents** and **free preview**.
+
+| Feature | Cursor | Antigravity |
+|---------|--------|-------------|
+| Multi-Agent | Sequential | Parallel |
+| Price | $20/mo | Free Preview |
+| Verification | Git diffs | Artifacts |
+| Best For | Precision | Rapid prototyping |
+
+**The Hybrid Workflow**: Users exhaust Cursor credits, then switch to free Antigravity.
+
+[→ Full Google Antigravity Guide](tips/google-antigravity.md)
+
+---
+
+## 📜 Advanced .cursorrules
+
+Sophisticated patterns from production teams:
+
+### The "Shout" Protocol
+```
+If existing code is altered, warn by shouting:
+❗️SHOUT WITH LARGE LETTERS❗️
+"WARNING: Modified existing function in file.ts"
+```
+
+### "Dumb" Component Enforcement
+```
+Presentation components must include "Dumb" in filename:
+- UserProfileCardDumb.vue
+- ProductListDumb.tsx
+```
+
+### Anti-Flake Testing
+```
+NEVER use page.waitForTimeout(5000)
+ALWAYS use built-in auto-wait mechanisms
+Target elements using data-testid attributes
+```
+
+[→ Full Advanced .cursorrules Guide](tips/advanced-cursorrules.md)
+
+---
+
+## 📋 Strategic Recommendations (Dec 2025)
+
+Based on community intelligence:
+
+1. **Enforce Confidence Scoring**: Mandate for all debugging tasks
+2. **Adopt Interface Freeze**: Don't let AI define architecture
+3. **Implement Rigid .cursorrules**: Copy "Dumb Component" and "Auto-Wait" patterns
+4. **Monitor Plan Bug**: Verify file timestamps after every Accept
+5. **Session Reset Cadence**: Clear context every 2-4 hours
+6. **Commit Before Agent**: Always `git commit -m "checkpoint"`
 
 ---
 

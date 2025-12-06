@@ -176,6 +176,64 @@ Users who built workflows around QA Mode, Architect Mode, etc. must migrate.
 
 ---
 
+## 11. "Plan" Mode Not Writing Files (CRITICAL)
+
+### Root Cause
+State desynchronization between AI agent's "mind" and physical disk. Race condition in file-write confirmation callbacks.
+
+### Symptoms
+```
+1. Plan mode shows diff view with changes
+2. Click "Accept"
+3. Files appear unchanged
+4. Changes only exist in chat memory
+```
+
+### Verification (Do This After EVERY Accept)
+```bash
+# Check file modification timestamp
+ls -la --time=modified <filename>
+
+# Or use git
+git diff
+git status
+```
+
+### Reference
+- [GitHub Issue #3844](https://github.com/cursor/cursor/issues/3844)
+
+---
+
+## 12. Context Decay / "Confident Lying"
+
+### Root Cause
+After token threshold, model truncates older context but attempts to "complete the pattern."
+
+### Symptoms
+- AI claims files exist that don't
+- AI contradicts earlier statements
+- AI hallucinates function signatures
+
+### The "Session Reset" Cadence
+```
+Light work:         Reset every 4-6 hours
+Heavy refactoring:  Reset every 2-3 hours
+Debugging:          Reset after ~20 messages
+"Confident lying":  Reset immediately
+```
+
+### Fresh Chat Summary Template
+```
+Starting fresh. Context:
+- Project: [name]
+- Stack: [tech]
+- Current task: [description]
+- Key files: @file1.ts @file2.ts
+- Last progress: [what was done]
+```
+
+---
+
 ## Prevention Checklist
 
 - [ ] Commit before Agent mode
@@ -183,3 +241,6 @@ Users who built workflows around QA Mode, Architect Mode, etc. must migrate.
 - [ ] Use .cursorignore
 - [ ] Set API spending limits
 - [ ] Restart after config changes
+- [ ] Verify file timestamps after Plan mode accepts
+- [ ] Use Confidence Scoring for debugging
+- [ ] Reset sessions proactively
