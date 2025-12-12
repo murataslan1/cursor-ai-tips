@@ -12,11 +12,14 @@ Five frontier models dominate AI coding in late 2025. Each has a distinct "cogni
 
 | Model | Primary Strength | Context | Speed | Cost | "Vibe" |
 |-------|------------------|---------|-------|------|--------|
+| **GPT-5.2 Thinking** | Reliability, Agent Mode | **400K** | Medium | $$ | Reliable Workhorse |
 | **Claude 4.5 Opus** | Planning, reliability | 200K | Medium | $$$ | Strict Senior Dev |
 | **GPT-5.1 Codex** | Execution, engineering | 128K | Medium | $$ | Pragmatic Doer |
 | **Gemini 3 Pro** | Visuals, massive context | **2M** | Fast | $ | Creative Designer |
 | **Kimi k2 Thinking** | Cost-effective reasoning | 256K | Medium | ¢ | Efficient Researcher |
 | **Grok 4.1** | Personality, creative | 256K | Fast | $$ | Witty Collaborator |
+
+> 🆕 **GPT-5.2** (Dec 2025): 98.7% tool reliability, 128K output window, adaptive reasoning. See dedicated section below.
 
 ---
 
@@ -31,6 +34,74 @@ Five frontier models dominate AI coding in late 2025. Each has a distinct "cogni
 | Kimi k2 | **65.8%** | - | ~$0.50 / $2.00 |
 
 > **Key Insight**: Claude 4.5 Sonnet leads in raw coding benchmarks. GPT-5.1 excels at multilingual polyglot tasks. Kimi k2 offers remarkable value at 1/6th the cost.
+
+---
+
+## GPT-5.2 (December 2025)
+
+**The Reliable Workhorse**
+
+Released December 11, 2025 as OpenAI's "Code Red" response to competitors.
+
+### Model Variants
+
+| Variant | Context | Output | Best For |
+|---------|---------|--------|----------|
+| **GPT-5.2 Instant** | 128K | 16K | Quick edits, chat |
+| **GPT-5.2 Thinking** | 200K | 32K | Complex reasoning |
+| **GPT-5.2 Pro** | **400K** | **128K** | Massive refactors |
+
+### Key Innovation: Adaptive Reasoning
+
+GPT-5.2 dynamically allocates compute time based on complexity:
+- Low: Quick responses (1-3s)
+- Medium: Balanced reasoning (3-10s)
+- High: Extensive thinking (10-30s)
+
+### Benchmarks
+
+| Benchmark | Score |
+|-----------|-------|
+| AIME 2025 (Math) | **100%** |
+| SWE-Bench Pro | **55.6%** |
+| Tool Reliability | **98.7%** |
+
+### Pricing
+
+| Tier | Input/1M | Output/1M |
+|------|----------|-----------|
+| Standard | $1.75 | $14.00 |
+| **Cached** | **$0.175** | $14.00 |
+
+**90% discount on cached inputs** — ideal for IDE usage.
+
+### The 128K Output Window
+
+Game-changer for coding:
+- Rewrite entire modules in single pass
+- No truncation of large files
+- No more `//... rest of code`
+
+### Best For
+
+```
+✅ Production code modifications
+✅ Agent Mode autonomous execution
+✅ Complex debugging (with High reasoning)
+✅ Multi-file refactoring
+✅ When reliability > creativity
+```
+
+### vs GPT-5.1
+
+| Aspect | GPT-5.1 | GPT-5.2 |
+|--------|---------|---------|
+| Reasoning | Static | Adaptive |
+| Tool Reliability | 85% | **98.7%** |
+| Output Window | 16K | **128K** |
+| "Laziness" | Common | Significantly reduced |
+
+[→ Full GPT-5.2 Guide](./gpt52-guide.md)
 
 ---
 

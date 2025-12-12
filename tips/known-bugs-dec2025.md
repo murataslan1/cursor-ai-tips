@@ -2,15 +2,21 @@
 
 A forensic analysis of critical bugs affecting Cursor during the agentic transition period.
 
+> ⚠️ **Cursor 2.2 Alert**: Version 2.2 introduced several critical bugs. See [Cursor 2.2 Bugs](./cursor-22-bugs.md) for detailed workarounds.
+
 ---
 
 ## Bug Severity Taxonomy
 
 | Severity | Issue Type | Description | Frequency |
 |----------|-----------|-------------|-----------|
+| **CRITICAL** | Revert/Undo Broken (2.2) | Revert fails, causing data loss | High |
 | **CRITICAL** | State Desynchronization | "Plan" mode shows diffs but fails to write to disk | High |
 | **CRITICAL** | Data Corruption | Todo List resets or duplicates after edits | Moderate |
+| **HIGH** | Visual Editor Loop (2.2) | Changes re-apply infinitely | Moderate |
+| **HIGH** | WSL Terminal Failure (2.2) | Agent can't spawn shell in WSL | High (Windows) |
 | **HIGH** | Hallucination | Model invents routing constraints or system requirements | High |
+| **MEDIUM** | AWS Region Reset (2.2) | Bedrock region reverts to US | Moderate |
 | **MEDIUM** | Context Decay | Model forgets file structure in long sessions | High |
 | **MEDIUM** | Integration Failure | MCP server fails to resolve relative paths | Moderate |
 | **LOW** | UI Regression | Sidebar cannot be reorganized; terminal window blank | Low |

@@ -10,7 +10,7 @@
 
 *Keyboard shortcuts, Composer workflows, .cursorrules examples, and Reddit community wisdom*
 
-[Shortcuts](#-keyboard-shortcuts) • [Composer](#-composer-mode) • [Context](#-context-management) • [Rules](#-cursorrules) • [Models](#-model-selection) • [MCP](#-mcp-integration) • [Security](#-security-concerns) • [Troubleshooting](#-troubleshooting) • [Reddit Tips](#-reddit-community-wisdom) • [GPT-5.1 Guide](#-gpt-51-codex-guide) • [Known Bugs](#-known-bugs-dec-2025)
+[Shortcuts](#-keyboard-shortcuts) • [Composer](#-composer-mode) • [Context](#-context-management) • [Rules](#-cursorrules) • [Models](#-model-selection) • [MCP](#-mcp-integration) • [Security](#-security-concerns) • [Troubleshooting](#-troubleshooting) • [Reddit Tips](#-reddit-community-wisdom) • [GPT-5.2 Guide](#-gpt-52-guide) • [Cursor 2.2](#-whats-new-in-cursor-22) • [Known Bugs](#-known-bugs-dec-2025)
 
 </div>
 
@@ -82,6 +82,38 @@ Popular "vibe coding" pattern for rapid prototyping:
 Users report building full SaaS products in 4 days using this hybrid approach.
 
 [→ Full Lovable + Cursor Guide](tips/lovable-cursor-workflow.md)
+
+---
+
+## 🆕 What's New in Cursor 2.2
+
+> ⚠️ **WARNING**: Cursor 2.2 has critical bugs. See [Cursor 2.2 Bugs](tips/cursor-22-bugs.md) before using.
+
+### Debug Mode (2.2)
+
+Agent instruments your code with logging, you trigger the bug, agent analyzes runtime data for empirical debugging.
+
+```
+1. Describe bug → 2. Agent adds logging → 3. YOU trigger bug → 4. Agent analyzes → 5. Fix proposed
+```
+
+### Visual Editor (2.2)
+
+Bidirectional DOM ↔ Source Code editing. Select elements in browser, modify via GUI, changes write to source files.
+
+### Multi-Agent Judging (2.2)
+
+Multiple agents solve your prompt in parallel. "Judge" agent picks the best solution. Increases token cost but improves quality.
+
+### ⚠️ Critical Bugs in 2.2
+
+| Bug | Impact | Workaround |
+|-----|--------|------------|
+| **Revert Broken** | Data loss! | Git commit before every agent call |
+| **Visual Editor Loop** | Infinite re-apply | Reload window |
+| **WSL Terminal** | Agent can't run commands | Enable Legacy Terminal |
+
+[→ Full 2.2 Features Guide](tips/cursor-22-features.md) | [→ 2.2 Bugs & Workarounds](tips/cursor-22-bugs.md)
 
 ---
 
@@ -245,16 +277,20 @@ You do not be lazy.
 
 | Model | Best For | Context | Speed | Cost |
 |-------|----------|---------|-------|------|
-| **Claude 4.5 Opus** | Planning, reliability, backend | 200K | Medium | $$$ |
+| **GPT-5.2 Thinking** | Reliability, Agent Mode, debugging | **400K** | Medium | $$ |
+| **Claude 4.5 Opus** | Planning, deep reasoning, backend | 200K | Medium | $$$ |
 | **GPT-5.1 High Max** | Architecture, balanced reasoning | 128K | Medium | $$ |
 | **Gemini 3 Pro** | Visuals, massive context, frontend | **2M** | Fast | $ |
 | **Kimi k2 Thinking** | Cost-effective reasoning, open-source | 256K | Medium | ¢ |
 | **Grok 4.1** | Personality, real-time data, vibe coding | 256K | Fast | $$ |
 
+> 🆕 **GPT-5.2** (Dec 2025): 98.7% tool reliability, 128K output window, adaptive reasoning. [→ Full GPT-5.2 Guide](tips/gpt52-guide.md)
+
 ### Model Personalities
 
 | Model | "Vibe" |
 |-------|--------|
+| GPT-5.2 | Reliable Workhorse |
 | Claude 4.5 | Strict Senior Developer |
 | GPT-5.1 | Pragmatic Architect |
 | Gemini 3 | Creative Designer |
@@ -580,6 +616,37 @@ Implementation Details       → Gemini 3 Pro or Claude Sonnet (cheaper)
 **Use Composer over raw chat** — Cursor's agent harness improves model behavior significantly.
 
 [→ Full GPT-5.1 Codex Guide](tips/gpt51-codex-guide.md)
+
+---
+
+## 🚀 GPT-5.2 Guide
+
+Released December 11, 2025 — OpenAI's "Code Red" response to competitors.
+
+### Key Specs
+
+| Variant | Context | Output | Best For |
+|---------|---------|--------|----------|
+| GPT-5.2 Instant | 128K | 16K | Quick edits |
+| GPT-5.2 Thinking | 200K | 32K | Complex reasoning |
+| GPT-5.2 Pro | **400K** | **128K** | Massive refactors |
+
+### Benchmarks
+
+- **AIME 2025**: 100% (math reasoning)
+- **SWE-Bench Pro**: 55.6% (can solve majority of mid-level tickets)
+- **Tool Reliability**: 98.7%
+
+### Pricing
+
+| Tier | Input/1M | Output/1M |
+|------|----------|-----------|
+| Standard | $1.75 | $14.00 |
+| **Cached** | **$0.175** | $14.00 |
+
+**90% discount on cached inputs** — ideal for IDE usage.
+
+[→ Full GPT-5.2 Guide](tips/gpt52-guide.md)
 
 ---
 

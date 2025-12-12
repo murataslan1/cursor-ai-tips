@@ -17,6 +17,24 @@ For the first time in 2025, Cursor faces a competitor capturing "Early Adopter" 
 
 ---
 
+## The Paradigm Shift: Editor vs Mission Control
+
+| Aspect | Cursor (Augmented Editor) | Antigravity (Agent Manager) |
+|--------|---------------------------|----------------------------|
+| **Primary Interface** | File Tree + Text Editor | Agent Manager (Mission Control) |
+| **User Role** | Pilot | Mission Controller |
+| **AI Invocation** | Modify text user is viewing | Assign high-level tickets |
+| **Context Load** | User decides which files matter | AI autonomously navigates |
+| **Cognitive Model** | "Help me edit this code" | "Complete this task" |
+
+### The Trust Model Difference
+
+**Cursor**: Verify every line via git diffs and code review. You read the code.
+
+**Antigravity**: Verify outcomes via Artifacts. You review screenshots and logs, not syntax.
+
+---
+
 ## Key Differentiators
 
 ### 1. Parallel Agents
@@ -42,11 +60,35 @@ In Cursor, this requires:
 
 ### 3. Artifacts System
 
-Instead of just showing diffs, Antigravity provides **Artifacts**:
-- Screenshots of UI state
-- Execution logs
-- Performance metrics
-- Visual verification of changes
+Instead of just showing diffs, Antigravity provides **Artifacts** — a fundamentally different verification model:
+
+| Artifact Type | What It Shows | Use Case |
+|---------------|---------------|----------|
+| **Screenshots** | UI state at completion | Visual verification |
+| **Screen Recordings** | Feature in action | Demo/QA |
+| **Execution Logs** | stdout/stderr output | Debugging |
+| **Performance Metrics** | Timing, memory usage | Optimization |
+| **Test Results** | Pass/fail with details | Quality gates |
+
+### The "Vibe Coding" Alignment
+
+Artifacts align with the "Vibe Coding" trend:
+- If screenshot shows feature working → code is (mostly) correct
+- Implementation details abstracted away
+- Developer reviews **outcomes**, not **syntax**
+
+### Artifact Workflow
+
+```
+1. Assign ticket: "Add dark mode toggle"
+2. Agent works autonomously
+3. Agent produces artifacts:
+   - Screenshot: Toggle in settings
+   - Recording: Theme switching
+   - Test: "dark-mode.spec.ts passed"
+4. You review artifacts, not code
+5. Approve or request changes
+```
 
 ---
 
