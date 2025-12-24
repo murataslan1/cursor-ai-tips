@@ -1,0 +1,49 @@
+---
+description: "Auto-Healing Test Doctrine"
+globs: ["**/*.spec.ts", "**/*.test.ts", "**/e2e/**"]
+alwaysApply: true
+---
+
+# Auto-Healing Test Doctrine
+
+## When a Test Fails
+
+1. Use `playwright_mcp` tool → run test with `--trace on`
+2. Analyze trace → was the selector changed?
+3. If YES: Update selector in test code directly (NO permission needed)
+4. If NO: Ask human (logic is broken, not just DOM)
+5. Rerun test to confirm fix
+
+## Selector Rules
+
+- NEVER ask permission for DOM selector changes
+- ALWAYS prefer `data-testid` attributes over class names
+- NEVER use `page.waitForTimeout(5000)` - use auto-wait
+- ALWAYS capture screenshots on failure
+
+## Self-Healing Loop Limit
+
+If test fails more than 3 times with same error:
+→ STOP fixing selectors
+→ ASK human for help
+→ This is likely a logic change, not DOM change
+
+## Good Selectors
+
+```typescript
+// ✅ Stable
+page.getByTestId('submit-login')
+page.getByRole('button', { name: 'Submit' })
+page.getByLabel('Email address')
+
+// ❌ Fragile
+page.locator('.btn-primary')
+page.locator('#form-submit')
+page.locator('div > button:first-child')
+```
+
+## After Fixing
+
+- Update this `.mdc` file if new pattern discovered
+- Add `data-testid` to component if missing
+- Log fix in test file comment

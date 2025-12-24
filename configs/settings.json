@@ -1,0 +1,27 @@
+{
+    "agents": {
+        "auto_apply_changes": false,
+        "legacy_terminal_tool": true,
+        "max_turns_per_session": 40,
+        "mcp_auto_tools": [
+            "playwright"
+        ],
+        "tools_permissions": {
+            "playwright_mcp": "auto"
+        }
+    },
+    "models": {
+        "codebase_indexing": "gemini-3-pro",
+        "default_chat": "claude-3.5-sonnet",
+        "planning": "gpt-5.2-thinking",
+        "refactoring": "claude-opus-4.5"
+    },
+    "editor": {
+        "auto_fix_lint": false,
+        "disable_auto_checkpoint": true
+    },
+    "security": {
+        "enforcement_hooks": false,
+        "sandbox_mode": "default"
+    }
+}

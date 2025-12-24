@@ -1,18 +1,31 @@
 <div align="center">
 
-# Cursor AI Tips & Tricks
+# 🚀 Cursor AI Tips & Tricks
 
+[![GitHub stars](https://img.shields.io/github/stars/murataslan1/cursor-ai-tips?style=social)](https://github.com/murataslan1/cursor-ai-tips/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/murataslan1/cursor-ai-tips?style=social)](https://github.com/murataslan1/cursor-ai-tips/network/members)
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Last Updated](https://img.shields.io/badge/Updated-December%2024,%202025-brightgreen)](https://github.com/murataslan1/cursor-ai-tips)
+[![Cursor Version](https://img.shields.io/badge/Cursor-2.3-blue)](https://cursor.com/changelog)
 
 **The ultimate guide to mastering Cursor AI IDE**
 
-*Keyboard shortcuts, Composer workflows, .cursorrules examples, and Reddit community wisdom*
+*Keyboard shortcuts, Composer workflows, .cursorrules examples, Gemini 3 Pro benchmarks, and Reddit community wisdom*
 
-[Shortcuts](#-keyboard-shortcuts) • [Composer](#-composer-mode) • [Context](#-context-management) • [Rules](#-cursorrules) • [Models](#-model-selection) • [MCP](#-mcp-integration) • [Security](#-security-concerns) • [Troubleshooting](#-troubleshooting) • [Reddit Tips](#-reddit-community-wisdom) • [GPT-5.2 Guide](#-gpt-52-guide) • [Cursor 2.2](#-whats-new-in-cursor-22) • [Known Bugs](#-known-bugs-dec-2025)
+[⚠️ Critical Bug](#-critical-zombie-revert-bug) • [🆕 Cursor 2.3](#-whats-new-in-cursor-23) • [🧠 Gemini 3 Pro](#-gemini-3-pro-guide) • [Shortcuts](#-keyboard-shortcuts) • [Composer](#-composer-mode) • [Models](#-model-selection) • [MCP](#-mcp-integration) • [🆚 Antigravity](#-google-antigravity) • [Enterprise](#-enterprise-features) • [Known Bugs](#-known-bugs-dec-2025)
 
 </div>
+
+---
+
+> [!CAUTION]
+> **🚨 CRITICAL: Zombie Revert Bug Active in Cursor 2.2.36+**
+> 
+> Cursor is randomly reverting code without consent, causing **data loss**. This bug persists in 2.3.
+> 
+> **Do NOT update** until hotfix is released. Use defensive commits. [Read the Holiday Freeze Protocol →](tips/zombie-revert-bug.md)
 
 ---
 
@@ -85,7 +98,107 @@ Users report building full SaaS products in 4 days using this hybrid approach.
 
 ---
 
+## 🆕 What's New in Cursor 2.3 (December 22, 2025)
+
+> 🎯 **"Stability and polish" release** - Major architectural improvements under the hood.
+
+### Process Separation (The Big Change)
+
+Extensions now run in an isolated process. If an extension crashes, **AI keeps working**:
+
+```
+Before: Extension crash → Everything freezes
+After:  Extension crash → AI continues working ✅
+```
+
+This is critical for enterprise users with large codebases.
+
+### Layout Customization Engine
+
+Four preset layouts with `⌘+⌥+⇥` (Mac) / `Ctrl+Alt+Tab` (Win):
+
+| Mode | Description | Best For |
+|:-----|:------------|:---------|
+| **Agent** | 50/50 Chat + Editor | Pair programming with AI |
+| **Editor** | Maximized editor | Deep focus |
+| **Zen** | Hidden chrome | Complex algorithms |
+| **Browser** | Split with Chromium | Frontend dev |
+
+### Enterprise Features
+
+- **Service Accounts** - Headless CI/CD automation
+- **SOC 2 Certified** - Enterprise compliance ready
+- **Enforcement Hooks** - Block sensitive data in prompts
+- **Linux Sandboxing** - Container-friendly deployments
+
+[→ Full 2.3 Guide](tips/cursor-23-features.md) | [→ Enterprise Features](tips/enterprise-features.md)
+
+---
+
+## 🚨 Critical: Zombie Revert Bug
+
+> ⚠️ **DATA LOSS WARNING**: Still active in 2.3. Read this before using Cursor.
+
+### What Happens
+
+- Cursor silently reverts your code minutes after saving
+- Multi-file operations can cause cascade corruption
+- Strongly linked to "Auto" mode and multiple agents
+
+### Holiday Freeze Protocol (Dec 24 - Jan 2)
+
+| ❌ DO NOT | ✅ SAFE TO DO |
+|:----------|:-------------|
+| Update Cursor past 2.2.35 | Single-file edits |
+| Run multi-file refactors | Test writing |
+| Use "Auto" model selection | Sequential agents (one at a time) |
+| Trust the "Revert" button | Planning with Gemini 3 Pro |
+
+### Defensive Commit (Critical)
+
+```bash
+# BEFORE every agent operation:
+git add -A && git commit -m "pre-agent-$(date +%s)"
+```
+
+[→ Full Zombie Revert Guide](tips/zombie-revert-bug.md) | [→ Windows Terminal Fixes](tips/windows-terminal-fixes.md)
+
+---
+
+## 🧠 Gemini 3 Pro Guide
+
+> 🏆 **HLE Benchmark Leader**: 37.5% - Best reasoning performance ever recorded.
+
+### Model Comparison (December 2025)
+
+| Model | HLE Score | Best For | Cost |
+|:------|:----------|:---------|:-----|
+| **Gemini 3 Pro** | 37.5% | Architecture, reasoning | Free (Beta) |
+| Claude Opus 4.5 | 34.8% | Legacy refactoring | $$$ |
+| GPT-5.2 | 32.1% | UI/UX, speed | $$ |
+| DeepSeek V3 | 28.9% | Budget bulk work | ¢ |
+
+### New Model Strategy
+
+```
+Architecture Planning  → Gemini 3 Pro (Free, best reasoning)
+Daily Implementation   → Claude 3.5 Sonnet (Best bang-for-buck)
+Legacy Refactoring     → Claude Opus 4.5 (Lowest risk)
+Bulk Test Writing      → DeepSeek V3 (53x cheaper)
+```
+
+### Configure Gemini for Codebase Indexing
+
+```
+Settings → Codebase Indexing → Model → Gemini 3 Pro
+```
+
+[→ Full Gemini 3 Pro Guide](tips/gemini-3-pro-guide.md)
+
+---
+
 ## 🆕 What's New in Cursor 2.2
+
 
 > ⚠️ **WARNING**: Cursor 2.2 has critical bugs. See [Cursor 2.2 Bugs](tips/cursor-22-bugs.md) before using.
 
@@ -772,6 +885,68 @@ Based on community intelligence:
 
 ---
 
+## 📁 Configuration Files (Copy-Paste Ready)
+
+Ready-to-use configuration files for optimal Cursor setup:
+
+### MCP Configuration
+
+```json
+// .cursor/mcp.json
+{
+  "mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "args": ["-y", "@playwright/mcp@latest"]
+    }
+  }
+}
+```
+
+### Defensive Settings
+
+```json
+// .cursor/settings.json
+{
+  "agents": {
+    "auto_apply_changes": false,
+    "legacy_terminal_tool": true,
+    "max_turns_per_session": 40
+  },
+  "models": {
+    "codebase_indexing": "gemini-3-pro"
+  }
+}
+```
+
+[→ Full MCP Config](configs/mcp.json) | [→ Full Settings](configs/settings.json) | [→ React Rules](configs/react-shipping.mdc) | [→ Test Rules](configs/testing.mdc)
+
+---
+
+## 🎭 Playwright Self-Healing Tests
+
+Tests that automatically fix themselves when selectors change:
+
+```
+1. Agent runs E2E test
+2. Test fails (selector changed)
+3. Agent analyzes DOM
+4. Agent updates selector
+5. Test passes ✅
+```
+
+### Quick Setup
+
+```bash
+# 1. Create .cursor/mcp.json (see above)
+# 2. Create .cursor/rules/testing.mdc
+# 3. Enable auto-tools in settings
+```
+
+[→ Full Playwright MCP Guide](tips/playwright-mcp-setup.md)
+
+---
+
 ## 📚 Resources
 
 - [Official Docs](https://docs.cursor.com)
@@ -794,10 +969,11 @@ Found a tip? Share it!
 
 <div align="center">
 
-**Star this repo if it helped you! ⭐**
+**⭐ Star this repo if it helped you!**
 
 Made with 💙 by [Murat Aslan](https://github.com/murataslan1)
 
-*Last updated: December 2025*
+*Last updated: December 24, 2025*
 
 </div>
+

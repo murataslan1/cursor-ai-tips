@@ -1,0 +1,55 @@
+---
+description: "React 19 + Next.js 15 Shipping Standards"
+globs: ["src/**/*.tsx", "src/**/*.ts", "app/**/*.tsx", "app/**/*.ts"]
+alwaysApply: true
+---
+
+# React 19 + Next.js 15 Shipping Standards
+
+## Architecture
+
+- **Interface Freeze First:** Define `types.ts` and API interfaces manually before implementation
+- **Server Components:** Default to RSC. Use `"use client"` only for state/effects
+- **Dumb Components:** Presentational-only components. Logic goes in hooks/services
+- **No Prop Drilling:** Use context or state management for deep props
+
+## File Organization
+
+```
+src/
+├── app/              # Next.js App Router pages
+├── components/
+│   ├── ui/           # Presentational (Dumb) components
+│   └── features/     # Feature-specific components
+├── hooks/            # Custom React hooks
+├── services/         # Business logic, API calls
+├── types/            # TypeScript interfaces
+└── utils/            # Pure utility functions
+```
+
+## Anti-Hallucination Rules
+
+- **npm list:** If unsure about a library import, verify it exists first
+- **No Stubbing:** Never write `// ... rest of code` or placeholders
+- **Full Files:** Output the COMPLETE file content every time
+- **Confidence Check:** If fixing a bug in a loop, output confidence score first
+
+## Code Style
+
+- Use `async/await` over `.then()` chains
+- Prefer named exports over default exports (except pages)
+- Use `satisfies` for type narrowing with inference
+- Avoid `any` - use `unknown` and narrow
+
+## Testing
+
+- Every exported function needs a unit test
+- Use `data-testid` for E2E test selectors
+- No `waitForTimeout()` - use proper auto-wait
+
+## Performance
+
+- Use `React.memo()` for expensive components
+- Lazy load below-the-fold components
+- Prefer `useMemo`/`useCallback` for expensive computations
+- Images: Always use `next/image` with proper sizing
