@@ -7,14 +7,14 @@
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Last Updated](https://img.shields.io/badge/Updated-December%2024,%202025-brightgreen)](https://github.com/murataslan1/cursor-ai-tips)
-[![Cursor Version](https://img.shields.io/badge/Cursor-2.3-blue)](https://cursor.com/changelog)
+[![Last Updated](https://img.shields.io/badge/Updated-January%201,%202026-brightgreen)](https://github.com/murataslan1/cursor-ai-tips)
+[![Cursor Version](https://img.shields.io/badge/Cursor-2.3.9-blue)](https://cursor.com/changelog)
 
 **The ultimate guide to mastering Cursor AI IDE**
 
 *Keyboard shortcuts, Composer workflows, .cursorrules examples, Gemini 3 Pro benchmarks, and Reddit community wisdom*
 
-[⚠️ Critical Bug](#-critical-zombie-revert-bug) • [🆕 Cursor 2.3](#-whats-new-in-cursor-23) • [🧠 Gemini 3 Pro](#-gemini-3-pro-guide) • [Shortcuts](#-keyboard-shortcuts) • [Composer](#-composer-mode) • [Models](#-model-selection) • [MCP](#-mcp-integration) • [🆚 Antigravity](#-google-antigravity) • [Enterprise](#-enterprise-features) • [Known Bugs](#-known-bugs-dec-2025)
+[⚠️ Holiday Freeze](#-holiday-freeze-protocol) • [🆕 Cursor 2.3](#-whats-new-in-cursor-23) • [🧠 Gemini 3 Pro](#-gemini-3-pro-guide) • [💸 Budget Models](#-budget-models-2026) • [📊 Market Stats](#-cursor-market-statistics) • [Shortcuts](#-keyboard-shortcuts) • [Composer](#-composer-mode) • [Models](#-model-selection) • [MCP](#-mcp-integration) • [🎭 PlayWhite](#-playwhite-workflow) • [🔮 2026 Outlook](#-2026-predictions)
 
 </div>
 
@@ -31,7 +31,9 @@
 
 ## Why Cursor?
 
-> 💰 **December 2025**: Anysphere (Cursor's parent company) valued at **$29.3 billion** after Series D funding, reflecting the explosive adoption of AI-assisted development.
+> 💰 **January 2026**: Anysphere (Cursor's parent company) valued at **$29.3 billion**. With **~$500M ARR**, **50% of Fortune 500** adoption, and **1M+ queries/second**, Cursor is the fastest-growing AI dev tool.
+
+[→ Full Market Statistics](tips/cursor-market-stats.md)
 
 Cursor is not just VS Code with AI - it's a **fork** that integrates LLMs directly into the rendering pipeline. This enables:
 
@@ -135,33 +137,50 @@ Four preset layouts with `⌘+⌥+⇥` (Mac) / `Ctrl+Alt+Tab` (Win):
 
 ---
 
-## 🚨 Critical: Zombie Revert Bug
+## 🚨 Holiday Freeze Protocol
 
-> ⚠️ **DATA LOSS WARNING**: Still active in 2.3. Read this before using Cursor.
+> ⚠️ **ALERT LEVEL: 🔴 DO NOT UPDATE** - Maintain v2.2.35 until Cursor 2.4
 
-### What Happens
+The developer community declared a "Holiday Freeze" starting December 24, 2025, after the "Zombie Revert" bug caused critical data loss in Cursor 2.3.
 
-- Cursor silently reverts your code minutes after saving
-- Multi-file operations can cause cascade corruption
-- Strongly linked to "Auto" mode and multiple agents
+### Protocol Directives (Dec 24 - Jan 7)
 
-### Holiday Freeze Protocol (Dec 24 - Jan 2)
+| Status | Action | Risk/Reason |
+|:------:|--------|-------------|
+| ❌ **PROHIBITED** | Update to 2.3.x | "Zombie Revert" data loss |
+| ❌ **PROHIBITED** | Multi-file Agent | Race conditions with disk |
+| ❌ **PROHIBITED** | "Auto" Model Selection | No deterministic control |
+| ⚠️ **CAUTION** | Visual Editor | Infinite "Apply/Undo" loops |
+| ✅ **SAFE** | Single-file edits | Lower desync risk |
+| ✅ **SAFE** | Planning Mode | Doesn't touch file I/O |
+| ✅ **RECOMMENDED** | Playwright MCP | "PlayWhite" verification workflow |
 
-| ❌ DO NOT | ✅ SAFE TO DO |
-|:----------|:-------------|
-| Update Cursor past 2.2.35 | Single-file edits |
-| Run multi-file refactors | Test writing |
-| Use "Auto" model selection | Sequential agents (one at a time) |
-| Trust the "Revert" button | Planning with Gemini 3 Pro |
+### The "Split-Brain" Scenario
 
-### Defensive Commit (Critical)
+```
+Editor (Process 1) ←?→ Composer (Process 2) ←?→ File System
+                              ↓
+              Desync = "Zombie Revert" (Silent Data Loss)
+```
+
+### Defensive Commit (CRITICAL)
 
 ```bash
 # BEFORE every agent operation:
 git add -A && git commit -m "pre-agent-$(date +%s)"
 ```
 
-[→ Full Zombie Revert Guide](tips/zombie-revert-bug.md) | [→ Windows Terminal Fixes](tips/windows-terminal-fixes.md)
+### Visual Editor Infinite Loop Bug (NEW in 2.3.9)
+
+The Visual Editor can enter infinite loops:
+- Agent applies CSS change
+- Browser renders slowly (latency)
+- Agent sees old state, tries again
+- Loop burns API credits indefinitely
+
+**Workaround**: Use Source View only until 2.4.
+
+[→ Full Holiday Freeze Protocol](tips/holiday-freeze-protocol.md) | [→ Zombie Revert Details](tips/zombie-revert-bug.md) | [→ PlayWhite Workflow](tips/playwhite-workflow.md)
 
 ---
 
@@ -194,6 +213,237 @@ Settings → Codebase Indexing → Model → Gemini 3 Pro
 ```
 
 [→ Full Gemini 3 Pro Guide](tips/gemini-3-pro-guide.md)
+
+---
+
+## 💸 Budget Models (2026)
+
+> 💡 **Cost Revolution**: DeepSeek V3 and Google Flash offer Claude-level quality at 15-50x lower cost.
+
+### The New Cost Landscape
+
+| Model | Input/1M | Output/1M | vs Claude Opus |
+|-------|----------|-----------|----------------|
+| Claude Opus 4.5 | $15.00 | $75.00 | Baseline |
+| GPT-5.2 | $1.75 | $14.00 | 5x cheaper |
+| **Google Flash** | $0.10 | $1.67 | **45x cheaper** |
+| **DeepSeek V3** | ~$0.14 | ~$0.28 | **268x cheaper** |
+
+### DeepSeek V3 + R1
+
+China-based open-source model gaining rapid adoption:
+
+```
+✅ 15x cheaper than Claude
+✅ Strong reasoning capabilities  
+✅ BYOK via OpenRouter
+⚠️ Less battle-tested
+⚠️ Use Claude for security-critical code
+```
+
+### Google Flash (Gemini 2.0 Flash)
+
+```
+✅ 45x cheaper than Claude Opus
+✅ Near-instantaneous responses
+✅ 1M token context window
+⚠️ Less reliable for agentic workflows
+```
+
+### Tiered Cost Strategy (2026)
+
+```
+Tier 1 (Critical Production):
+├─ Claude Opus 4.5 ($75/M output)
+└─ Security-critical, high-stakes refactors
+
+Tier 2 (Daily Development):
+├─ Google Flash ($1.67/M output) ← 45x cheaper!
+├─ DeepSeek V3 ($0.28/M output)
+└─ Routine CRUD, boilerplate
+
+Tier 3 (Planning/Architecture):
+├─ Gemini 3 Pro (Free Beta)
+└─ Design reviews, architecture planning
+```
+
+[→ DeepSeek V3 Guide](tips/deepseek-v3-guide.md) | [→ Google Flash Guide](tips/google-flash-guide.md)
+
+---
+
+## 📊 Cursor Market Statistics
+
+> 🚀 Cursor is approaching feature parity with GitHub Copilot's **~$500M ARR**.
+
+### Growth Metrics (October 2025 - Official)
+
+| Metric | Value |
+|--------|-------|
+| **Load Increase** | 100x in 1 year |
+| **Queries/Second** | 1M+ peak |
+| **Paying Customers** | 40,000+ |
+| **Fortune 500 Adoption** | ~50% |
+| **ARR** | ~$500M |
+| **Valuation** | $29.3B (Dec 2025) |
+
+### Market Share (2025)
+
+```
+GitHub Copilot ████████████████████ 40% (flat)
+Cursor         ████████████████░░░░ 35% (rising fast)
+Windsurf       ████░░░░░░░░░░░░░░░░ 8%
+Cline          ███░░░░░░░░░░░░░░░░░ 7%
+Others         ██░░░░░░░░░░░░░░░░░░ 10%
+
+Projection: Cursor overtakes Copilot in Q2 2026
+```
+
+### Notable Enterprise Customers
+
+OpenAI | Samsung | Midjourney | Perplexity | Shopify
+
+[→ Full Market Statistics](tips/cursor-market-stats.md)
+
+---
+
+## 🔍 Debug Mode (Detailed Guide)
+
+> **Success Rate**: ~70% first-attempt fix | **ROI**: 60% debugging time reduction
+
+Debug Mode transforms debugging from guesswork into a scientific process.
+
+### The Debug Mode Workflow
+
+```
+┌─────────────────────────────────────────────────────────┐
+│  1. HYPOTHESIS GENERATION                               │
+│     Agent scans codebase, generates multiple theories   │
+│                         ↓                               │
+│  2. ACTIVE INSTRUMENTATION                              │
+│     Agent autonomously inserts logging statements       │
+│                         ↓                               │
+│  3. YOU TRIGGER THE BUG                                 │
+│     Reproduce the issue with instrumented code          │
+│                         ↓                               │
+│  4. RUNTIME ANALYSIS                                    │
+│     Agent ingests logs, compares to mental model        │
+│                         ↓                               │
+│  5. ROOT CAUSE IDENTIFICATION                           │
+│     Agent accepts/rejects hypotheses based on evidence  │
+│                         ↓                               │
+│  6. FIX PROPOSAL                                        │
+│     Targeted fix based on empirical data                │
+└─────────────────────────────────────────────────────────┘
+```
+
+### Quick Usage
+
+```
+1. Open Chat (Cmd + L)
+2. Click "Debug" icon OR type "/debug"
+3. Describe the bug clearly
+4. Let agent instrument code
+5. Reproduce the bug
+6. Review and accept fix
+```
+
+[→ Full Debug Mode Guide](tips/debug-mode-guide.md)
+
+---
+
+## 🎭 PlayWhite Workflow
+
+> **Status**: ✅ RECOMMENDED - The safest workflow during Cursor instability
+
+"PlayWhite" is the Playwright MCP integration workflow that emerged as the **primary defense** against the Zombie Revert bug.
+
+### The Core Principle
+
+```
+Instead of: Trust AI → Write Code → Hope it works
+PlayWhite:  AI writes test → Runs browser → Proves it works → Commit
+```
+
+### The Self-Healing Loop
+
+```
+1. Agent writes/modifies code
+2. Agent runs E2E test via Playwright MCP
+3. Test fails? Agent analyzes DOM, fixes code
+4. Agent verifies fix
+5. Test passes → Safe to commit ✅
+```
+
+### Quick Setup
+
+```json
+// .cursor/mcp.json
+{
+  "mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "args": ["-y", "@playwright/mcp@latest"]
+    }
+  }
+}
+```
+
+### The Magic Prompt
+
+```
+Run the login test. If it fails:
+1. Read the error logs
+2. Analyze the DOM
+3. Fix the code (not just the test)
+4. Run again until it passes
+```
+
+[→ Full PlayWhite Workflow Guide](tips/playwhite-workflow.md)
+
+---
+
+## 🔮 2026 Predictions
+
+Strategic forecasts based on December 2025 intelligence.
+
+### Prediction Matrix
+
+| Prediction | Confidence | Timeline |
+|------------|:----------:|----------|
+| Cursor overtakes Copilot market share | 🟢 High | Q2 2026 |
+| DeepSeek V3 gains 10%+ market share | 🟢 High | Q1 2026 |
+| Multi-Agent Judging becomes standard | 🟢 High | Q1 2026 |
+| Google Flash challenges Claude Sonnet | 🟡 Medium | Q2 2026 |
+| Cursor 2.4 focuses on performance | 🟡 Medium | Q1 2026 |
+
+### Key Dates to Watch
+
+| Date | Expected Event |
+|------|----------------|
+| Jan 6-10, 2026 | Cursor 2.3 "all clear" |
+| Q1 2026 | Cursor 2.4 release |
+| Q2 2026 | Cursor overtakes Copilot |
+
+### Strategic Recommendations
+
+```
+Individual Developers:
+├─ Adopt tiered model strategy
+├─ Master Playwright MCP
+└─ Build personal .cursorrules library
+
+Team Leads:
+├─ Standardize on Cursor v2.2.35
+├─ Implement model routing policy
+└─ Mandate pre-agent Git commits
+
+CTOs:
+├─ Evaluate Cursor Enterprise
+├─ Budget for model diversity
+└─ Track cost-per-feature metrics
+```
+
+[→ Full 2026 Predictions](tips/2026-predictions.md)
 
 ---
 
@@ -449,6 +699,30 @@ Strategy:
 ```
 
 > **Warning**: Don't switch models mid-conversation. It breaks the "train of thought."
+
+### 🏆 GPT-5.2 vs Claude Opus 4.5 (The Model Wars)
+
+After three weeks of field usage (Dec 2025), the consensus is clear:
+
+| Benchmark | GPT-5.2 | Claude Opus 4.5 | Winner |
+|-----------|---------|-----------------|:------:|
+| **GDPval-AA** (Economic Value) | 🏆 Highest | - | GPT-5.2 |
+| **SWE-Bench Verified** (Code) | 80.0% | **80.9%** | Claude |
+| **Prompt Injection Resistance** | 21.9% success | **4.7%** success | Claude 🛡️ |
+| **Rust Benchmark Runtime** | ~20 min | **~9 min** | Claude ⚡ |
+| **Memory Usage** | **100GB** | 500GB | GPT-5.2 |
+
+**Community Sentiment:**
+
+> **Claude Opus 4.5**: "The Gold Standard" - Best for implementation
+> **GPT-5.2**: "Fast but sterile" - Best for architecture/planning
+
+**The Hybrid Workflow Winner:**
+
+```
+GPT-5.2 → Architecture & Planning (fast, cheap cached)
+Claude Opus 4.5 → Implementation (accurate, secure)
+```
 
 [→ Full Model Guide](tips/model-selection.md)
 
@@ -973,7 +1247,7 @@ Found a tip? Share it!
 
 Made with 💙 by [Murat Aslan](https://github.com/murataslan1)
 
-*Last updated: December 24, 2025*
+*Last updated: January 1, 2026*
 
 </div>
 
