@@ -1,22 +1,140 @@
 <div align="center">
 
+<img src="assets/banner.png" alt="Cursor AI Tips & Tricks Banner" width="100%">
+
 # 🚀 Cursor AI Tips & Tricks
 
-[![GitHub stars](https://img.shields.io/github/stars/murataslan1/cursor-ai-tips?style=social)](https://github.com/murataslan1/cursor-ai-tips/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/murataslan1/cursor-ai-tips?style=social)](https://github.com/murataslan1/cursor-ai-tips/network/members)
-[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Last Updated](https://img.shields.io/badge/Updated-January%201,%202026-brightgreen)](https://github.com/murataslan1/cursor-ai-tips)
-[![Cursor Version](https://img.shields.io/badge/Cursor-2.3.9-blue)](https://cursor.com/changelog)
+**The Ultimate Guide to AI-Assisted Development in 2026**
 
-**The ultimate guide to mastering Cursor AI IDE**
+[![GitHub stars](https://img.shields.io/github/stars/murataslan1/cursor-ai-tips?style=for-the-badge&logo=github&color=yellow)](https://github.com/murataslan1/cursor-ai-tips/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/murataslan1/cursor-ai-tips?style=for-the-badge&logo=github&color=blue)](https://github.com/murataslan1/cursor-ai-tips/network/members)
+[![GitHub watchers](https://img.shields.io/github/watchers/murataslan1/cursor-ai-tips?style=for-the-badge&logo=github&color=green)](https://github.com/murataslan1/cursor-ai-tips/watchers)
 
-*Keyboard shortcuts, Composer workflows, .cursorrules examples, Gemini 3 Pro benchmarks, and Reddit community wisdom*
+[![Cursor Version](https://img.shields.io/badge/Cursor-2.3.9-purple?style=for-the-badge&logo=visual-studio-code)](https://cursor.com/changelog)
+[![Last Updated](https://img.shields.io/badge/Updated-January%202026-brightgreen?style=for-the-badge)](https://github.com/murataslan1/cursor-ai-tips)
+[![Awesome](https://img.shields.io/badge/Awesome-List-fc60a8?style=for-the-badge&logo=awesomelists)](https://awesome.re)
+[![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen?style=for-the-badge)](http://makeapullrequest.com)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
-[⚠️ Holiday Freeze](#-holiday-freeze-protocol) • [🆕 Cursor 2.3](#-whats-new-in-cursor-23) • [🧠 Gemini 3 Pro](#-gemini-3-pro-guide) • [💸 Budget Models](#-budget-models-2026) • [📊 Market Stats](#-cursor-market-statistics) • [Shortcuts](#-keyboard-shortcuts) • [Composer](#-composer-mode) • [Models](#-model-selection) • [MCP](#-mcp-integration) • [🎭 PlayWhite](#-playwhite-workflow) • [🔮 2026 Outlook](#-2026-predictions)
+*2000+ lines of Cursor tips, .cursorrules examples, model benchmarks, MCP integrations, and community wisdom*
+
+<br>
+
+**⚡ Quick Links:**
+
+[🚨 Holiday Freeze](#-holiday-freeze-protocol) · [🆕 Cursor 2.3](#-whats-new-in-cursor-23) · [💸 Budget Models](#-budget-models-2026) · [📊 Market Stats](#-cursor-market-statistics) · [🎭 PlayWhite](#-playwhite-workflow) · [🔮 2026 Predictions](#-2026-predictions)
 
 </div>
+
+---
+
+## 📋 Table of Contents
+
+<details>
+<summary><b>Click to expand full navigation</b></summary>
+
+### 🚨 Critical Information
+- [Holiday Freeze Protocol](#-holiday-freeze-protocol) - **READ FIRST**
+- [Known Bugs (Dec 2025)](#-known-bugs-dec-2025)
+
+### 🆕 What's New
+- [Cursor 2.3](#-whats-new-in-cursor-23-december-22-2025)
+- [Cursor 2.2](#-whats-new-in-cursor-22)
+- [Cursor 2.0/2.1](#-whats-new-in-cursor-2021)
+
+### 🧠 Models & AI
+- [Gemini 3 Pro Guide](#-gemini-3-pro-guide)
+- [Budget Models 2026](#-budget-models-2026) - DeepSeek V3, Google Flash
+- [Model Selection](#-model-selection-2025-update)
+- [GPT-5.2 vs Claude](#-gpt-52-vs-claude-opus-45-the-model-wars)
+
+### 📊 Market Intelligence
+- [Cursor Market Statistics](#-cursor-market-statistics)
+- [2026 Predictions](#-2026-predictions)
+
+### 🛠️ Features & Workflows
+- [Keyboard Shortcuts](#-keyboard-shortcuts)
+- [Composer Mode](#-composer-mode)
+- [Debug Mode](#-debug-mode-detailed-guide)
+- [PlayWhite Workflow](#-playwhite-workflow)
+- [MCP Integration](#-mcp-integration)
+
+### 📝 Configuration
+- [.cursorrules](#-cursorrules)
+- [Advanced .cursorrules](#-advanced-cursorrules)
+- [Context Management](#-context-management)
+
+### 🔒 Security & Best Practices
+- [Security Concerns](#-security-concerns)
+- [Troubleshooting](#-troubleshooting)
+- [Vibe Coding](#-vibe-coding)
+
+### 📚 Resources
+- [Quick Start Path](#-quick-start-path)
+- [Configuration Files](#-configuration-files-copy-paste-ready)
+- [Contributing](#-contributing)
+
+</details>
+
+---
+
+## ⚡ Quick Start (Copy-Paste Ready)
+
+Get productive with Cursor in 60 seconds:
+
+### 1️⃣ Essential Keyboard Shortcuts
+
+```
+⌘/Ctrl + K  → Inline edit (single file)
+⌘/Ctrl + L  → Chat (ask questions)
+⌘/Ctrl + I  → Composer (multi-file agent)
+```
+
+### 2️⃣ Create `.cursorrules` in your project root
+
+```
+You are an expert engineer.
+Always use TypeScript with strict mode.
+Use functional components with React Hooks.
+Every function needs a unit test.
+DO NOT use placeholders or "// ...existing code".
+Output the FULL file content.
+```
+
+### 3️⃣ Defensive Git Commit (Critical for 2.3!)
+
+```bash
+# Run before every Agent operation:
+git add -A && git commit -m "pre-agent-$(date +%s)"
+```
+
+### 4️⃣ Configure MCP for Self-Healing Tests
+
+```json
+// .cursor/mcp.json
+{
+  "mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "args": ["-y", "@playwright/mcp@latest"]
+    }
+  }
+}
+```
+
+**📖 That's it! Now read on for advanced strategies...**
+
+---
+
+## 📈 Star History
+
+<a href="https://star-history.com/#murataslan1/cursor-ai-tips&Date">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=murataslan1/cursor-ai-tips&type=Date&theme=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=murataslan1/cursor-ai-tips&type=Date" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=murataslan1/cursor-ai-tips&type=Date" />
+ </picture>
+</a>
 
 ---
 
@@ -1223,31 +1341,88 @@ Tests that automatically fix themselves when selectors change:
 
 ## 📚 Resources
 
-- [Official Docs](https://docs.cursor.com)
-- [r/cursor](https://reddit.com/r/cursor)
-- [Cursor Forum](https://forum.cursor.com)
-- [awesome-cursorrules](https://github.com/PatrickJS/awesome-cursorrules)
+| Resource | Link |
+|----------|------|
+| 📖 Official Cursor Docs | [docs.cursor.com](https://docs.cursor.com) |
+| 💬 r/cursor Reddit | [reddit.com/r/cursor](https://reddit.com/r/cursor) |
+| 🗣️ Cursor Forum | [forum.cursor.com](https://forum.cursor.com) |
+| ⚡ awesome-cursorrules | [github.com/PatrickJS/awesome-cursorrules](https://github.com/PatrickJS/awesome-cursorrules) |
+| 📰 Cursor Changelog | [cursor.com/changelog](https://cursor.com/changelog) |
 
 ---
 
 ## 🤝 Contributing
 
-Found a tip? Share it!
+<div align="center">
 
-1. Fork this repo
-2. Add your tip to relevant file
-3. Include source (Reddit, Twitter, etc.)
-4. Open PR
+**This repo thrives on community contributions!**
+
+[![Contributors](https://contrib.rocks/image?repo=murataslan1/cursor-ai-tips)](https://github.com/murataslan1/cursor-ai-tips/graphs/contributors)
+
+</div>
+
+### How to Contribute
+
+1. **🍴 Fork** this repository
+2. **📝 Add** your tip to the relevant file in `/tips`
+3. **🔗 Include source** (Reddit, Twitter, Forum, etc.)
+4. **✅ Submit** a Pull Request
+
+### What We're Looking For
+
+| Type | Examples |
+|------|----------|
+| 🆕 **New Tips** | Workflows, shortcuts, hidden features |
+| 🐛 **Bug Reports** | New bugs, workarounds, fixes |
+| 📊 **Benchmarks** | Model comparisons, speed tests |
+| 🔧 **Configs** | .cursorrules, .mdc files, MCP configs |
+| 🌐 **Translations** | Translate to other languages |
+
+### Contribution Guidelines
+
+```
+✅ Use clear, concise language
+✅ Include code examples where applicable
+✅ Cite your sources (Reddit, Twitter, etc.)
+✅ Test your tips before submitting
+✅ Follow existing formatting style
+```
+
+---
+
+## 💝 Support This Project
+
+If this repo helped you, consider:
+
+<div align="center">
+
+[![Star this repo](https://img.shields.io/badge/⭐_Star_This_Repo-yellow?style=for-the-badge)](https://github.com/murataslan1/cursor-ai-tips)
+[![Share on Twitter](https://img.shields.io/badge/Share_on_Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/intent/tweet?text=Check%20out%20this%20awesome%20Cursor%20AI%20tips%20repo!&url=https://github.com/murataslan1/cursor-ai-tips)
+[![Share on LinkedIn](https://img.shields.io/badge/Share_on_LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/sharing/share-offsite/?url=https://github.com/murataslan1/cursor-ai-tips)
+
+</div>
 
 ---
 
 <div align="center">
 
-**⭐ Star this repo if it helped you!**
+<img src="assets/banner.png" alt="Footer Banner" width="60%">
 
-Made with 💙 by [Murat Aslan](https://github.com/murataslan1)
+### ⭐ Star this repo if it helped you!
+
+**Made with 💙 by [Murat Aslan](https://github.com/murataslan1)**
+
+[![GitHub followers](https://img.shields.io/github/followers/murataslan1?label=Follow&style=social)](https://github.com/murataslan1)
+[![Twitter Follow](https://img.shields.io/twitter/follow/murataslan1?style=social)](https://twitter.com/murataslan1)
 
 *Last updated: January 1, 2026*
 
-</div>
+---
 
+**📊 Repo Stats**
+
+![Repo Size](https://img.shields.io/github/repo-size/murataslan1/cursor-ai-tips?style=flat-square)
+![Lines of Code](https://img.shields.io/tokei/lines/github/murataslan1/cursor-ai-tips?style=flat-square)
+![Last Commit](https://img.shields.io/github/last-commit/murataslan1/cursor-ai-tips?style=flat-square)
+
+</div>
