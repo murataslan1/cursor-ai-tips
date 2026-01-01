@@ -1,368 +1,53 @@
-# Model Context Protocol (MCP) Integration
+# 🎭 "PlayWhite": The Playwright MCP Workflow
 
-[← Back to Main](../README.md)
+**Trend:** Viral "Killer App" of Jan 2026
+**Role:** Test-Driven Development on Autopilot
 
-> MCP is "USB-C for AI" - universal standard for connecting Cursor to databases, APIs, and tools.
+"PlayWhite" is the community nickname for connecting **Playwright** (via Model Context Protocol) to Cursor. It transforms the IDE into a self-healing testing lab.
 
----
+## 🚀 The Workflow
 
-## What is MCP?
+1.  **Agent Runs Test:** You ask Cursor to "Verify the login flow".
+2.  **Browser Launches:** Cursor uses `@playwright/mcp` to open a headless Chrome instance.
+3.  **Test Fails:** The selector `.submit-btn` is missing.
+4.  **Agent Analyzes:** The Agent inspects the DOM, sees the button is now `.btn-primary`.
+5.  **Agent Fixes Code:** It updates `login.tsx` to match the test requirements.
+6.  **Agent Re-Runs:** Verification passes.
 
-If LLMs are the "brain" of the new development stack, MCP is the "nervous system." Introduced by Anthropic and rapidly adopted by Cursor, MCP provides a standardized interface for AI models to connect with external data and tools.
-
-Enables Cursor Agent to:
-- Query databases directly
-- Manage GitHub PRs/Issues
-- Control browsers for testing
-- Access custom APIs
-- Read production error logs (Sentry)
-- Execute autonomous testing loops
+All of this happens without you writing a single line of test code.
 
 ---
 
-## Transport Methods
+## 🛠️ Setup
 
-### Stdio (Local)
-```
-Cursor → spawns process → stdin/stdout JSON-RPC
-Best for: Local databases, dev tools
-```
-
-### SSE (Remote)
-```
-Cursor → HTTP → Server-Sent Events
-Best for: Team-shared resources, cloud services
-```
-
----
-
-## Configuration: mcp.json
-
-### File Location
-
-As of Cursor 2.1, the recommended location is `.cursor/mcp.json` (project-specific):
+1.  **Install the MCP Server:**
 
 ```bash
-mkdir -p .cursor
-touch .cursor/mcp.json
+npm install -D @playwright/mcp
 ```
 
-> **Note**: Project root `mcp.json` still works for backward compatibility, but `.cursor/mcp.json` is preferred for isolation.
+2.  **Configure `mcp.json`:**
 
-### Basic Structure
-
-```json
-{
-  "mcpServers": {
-    "server-name": {
-      "command": "executable",
-      "args": ["arg1", "arg2"],
-      "env": { "KEY": "value" }
-    }
-  }
-}
-```
-
----
-
-## Example: PostgreSQL
-
-```json
-{
-  "mcpServers": {
-    "postgres": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-postgres", "${env:DATABASE_URL}"],
-      "env": { "DANGEROUSLY_ALLOW_WRITE_OPS": "false" }
-    }
-  }
-}
-```
-
-**Usage**: "Check Users table schema and create TypeScript interface"
-
----
-
-## Example: GitHub
-
-```json
-{
-  "mcpServers": {
-    "github": {
-      "command": "docker",
-      "args": ["run", "-i", "--rm", "-e", "GITHUB_PERSONAL_ACCESS_TOKEN", "ghcr.io/github/github-mcp-server"]
-    }
-  }
-}
-```
-
-**Usage**: "Find open issues labeled 'bug'" or "Create PR with these changes"
-
----
-
-## Example: Puppeteer (Browser)
-
-```json
-{
-  "mcpServers": {
-    "browser": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-puppeteer"]
-    }
-  }
-}
-```
-
-**Usage**: "Navigate to localhost:3000 and screenshot login page"
-
----
-
-## Multi-Server Setup
-
-```json
-{
-  "mcpServers": {
-    "postgres": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-postgres", "${env:DATABASE_URL}"]
-    },
-    "github": {
-      "command": "docker",
-      "args": ["run", "-i", "--rm", "-e", "GITHUB_PERSONAL_ACCESS_TOKEN", "ghcr.io/github/github-mcp-server"]
-    },
-    "browser": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-puppeteer"]
-    }
-  }
-}
-```
-
----
-
-## Available Servers
-
-| Server | Package | Purpose |
-|--------|---------|---------|
-| PostgreSQL | `@modelcontextprotocol/server-postgres` | DB queries |
-| SQLite | `@modelcontextprotocol/server-sqlite` | Local DB |
-| Filesystem | `@modelcontextprotocol/server-filesystem` | File access |
-| Puppeteer | `@modelcontextprotocol/server-puppeteer` | Browser |
-| GitHub | `ghcr.io/github/github-mcp-server` | PR/Issues |
-
----
-
-## Security
-
-1. **Never hardcode secrets** - Use `${env:VAR_NAME}`
-2. **Read-only default** - `DANGEROUSLY_ALLOW_WRITE_OPS: false`
-3. **Limit paths** - Restrict filesystem access
-4. **Use official images** - For Docker-based servers
-
----
-
-## Troubleshooting
-
-- **Not working**: Restart Cursor after adding mcp.json
-- **Server error**: Test manually with `npx -y @modelcontextprotocol/server-postgres $DATABASE_URL`
-- **Permissions**: Check env vars are set correctly
-
-### Path Resolution Failures (Common Issue)
-
-MCP servers often fail with "Red Light" errors due to relative path issues when launching from different working directories.
-
-**Symptoms**:
-```
-Error: Could not find playwright.config.ts
-Connection status: Red Light
-```
-
-**Fix**: Create a wrapper script:
-
-```bash
-#!/bin/bash
-# playwright-test-wrapper.sh
-cd "$(dirname "$0")"
-npx playwright test "$@"
-```
-
-Update `mcp.json` to use the wrapper:
-
-```json
-{
-  "mcpServers": {
-    "playwright": {
-      "command": "./playwright-test-wrapper.sh"
-    }
-  }
-}
-```
-
-**Reference**: [GitHub Issue #37739](https://github.com/microsoft/playwright/issues/37739)
-
----
-
-## Example: Playwright (E2E Testing) - "PlayWhite"
-
-The most transformative MCP application - enables "Self-Healing Tests."
-
-> 💡 **"PlayWhite"** is the community nickname for Playwright MCP. As one user put it: *"UTILIZEM PLAYWHITE, É RAPIDO, FACIL E BOM DEMAIS"* (Use PlayWhite, it's fast, easy and amazing!)
-
-### Configuration (.cursor/mcp.json)
+Add this to your project's `mcp.json` (or global settings):
 
 ```json
 {
   "mcpServers": {
     "playwright": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@playwright/mcp@latest"
-      ],
-      "env": {
-        "PLAYWRIGHT_BROWSERS_PATH": "0"
-      }
+      "args": ["@playwright/mcp@latest"]
     }
   }
 }
 ```
 
-> **Important**: `PLAYWRIGHT_BROWSERS_PATH: "0"` ensures browsers are downloaded to the default location, avoiding path issues.
+3.  **Usage Prompt:**
 
-### The Autofix Workflow (Shadow Engineering)
-
-```
-1. Context Injection: User provides URL (localhost) or test file
-2. Tool Execution: Agent launches browser (headed or headless)
-3. Perception: Agent captures DOM, console errors, screenshots
-4. Remediation: If test fails, Agent analyzes and fixes code
-5. Verification: Agent re-runs test to confirm fix
-```
-
-### Why "Shadow Engineering"?
-
-This workflow allows a single developer to maintain a test suite that would typically require a dedicated QA engineer:
-
-```
-Before PlayWhite:
-- Test breaks → Developer manually debugs → Hours lost
-- Selector changed → Manual inspection → Context switching
-
-After PlayWhite:
-- Test breaks → Agent identifies #submit-btn renamed to #login-btn
-- Agent edits login.spec.ts → Re-runs test → Minutes, not hours
-```
-
-### Usage Examples
-
-```
-"Run the login E2E test and fix any failures"
-"Navigate to localhost:3000/dashboard and verify all elements load"
-"Take a screenshot of the checkout page and identify CSS issues"
-```
-
-### Why This Matters
-
-E2E tests often break with minor UI changes. With MCP, the Agent can "heal" tests automatically:
-
-```
-Before MCP:
-- Test breaks → Developer manually fixes → Hours lost
-
-After MCP:
-- Test breaks → Agent identifies issue → Agent fixes → Minutes
-```
+> "Using the Playwright MCP, navigate to http://localhost:3000. Try to log in with user 'admin' and password 'admin'. If it fails, take a screenshot and analyze the DOM to tell me why."
 
 ---
 
-## Example: Sentry (Production Debugging)
+## ⚠️ Limitations
 
-Connect to production error logs for faster debugging.
-
-```json
-{
-  "mcpServers": {
-    "sentry": {
-      "command": "npx",
-      "args": ["-y", "@sentry/mcp-server"],
-      "env": {
-        "SENTRY_AUTH_TOKEN": "${env:SENTRY_AUTH_TOKEN}",
-        "SENTRY_ORG": "your-org"
-      }
-    }
-  }
-}
-```
-
-### Production-to-Development Loop
-
-```
-Instead of:
-- User reports bug
-- Developer searches Sentry
-- Copy-pastes stack trace
-- Debugs manually
-
-With MCP:
-- "Fix the error from Sentry issue #12345"
-- Agent queries Sentry directly
-- Gets full stack trace, correlation ID, variable state
-- Proposes fix in local code
-```
-
----
-
-## Headed vs Headless Browser
-
-### Headed Mode (Visible)
-
-```
-Pros:
-- Watch Agent "click around"
-- Trust verification
-- Debug visual issues
-
-Cons:
-- Slower
-- DISPLAY issues in WSL2/Linux
-- More resource intensive
-```
-
-### Headless Mode (Default)
-
-```
-Pros:
-- Faster
-- Works in CI/CD
-- No GUI dependencies
-
-Cons:
-- Can't watch execution
-- May miss visual regressions
-```
-
-### Forcing Headed Mode
-
-```json
-{
-  "mcpServers": {
-    "playwright": {
-      "command": "npx",
-      "args": ["@playwright/mcp@latest", "--headed"]
-    }
-  }
-}
-```
-
----
-
-## References
-
-- [Cursor MCP Docs](https://cursor.com/docs/cookbook/building-mcp-server)
-- [GitHub MCP Server](https://github.com/github/github-mcp-server)
-- [Playwright MCP](https://github.com/microsoft/playwright-mcp)
-- [Sentry MCP Guide](https://skywork.ai/skypage/en/sentry-mcp-server-ai-debugging/)
-
----
-
-[← Back to Main](../README.md)
+*   **Context usage:** Playwright logs are verbose. Use `Gemini 3 Pro` (2M context) if you are analyzing long test runs.
+*   **Flakiness:** Agentic tests can be flaky. Always manually review critical test paths.
