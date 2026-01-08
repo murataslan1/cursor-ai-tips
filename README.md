@@ -7,14 +7,14 @@
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Last Updated](https://img.shields.io/badge/Updated-January%2001,%202026-brightgreen)](https://github.com/murataslan1/cursor-ai-tips)
+[![Last Updated](https://img.shields.io/badge/Updated-January%2008,%202026-brightgreen)](https://github.com/murataslan1/cursor-ai-tips)
 [![Cursor Version](https://img.shields.io/badge/Cursor-2.3-blue)](https://cursor.com/changelog)
 
 **The ultimate guide to mastering Cursor AI IDE**
 
 *Keyboard shortcuts, Composer workflows, best practices for 2026, and benchmarks for GPT-5.2 vs Claude Opus 4.5*
 
-[⚠️ Critical Bug](#-critical-zombie-revert-bug) • [🆕 Cursor 2.3](#-whats-new-in-cursor-23) • [⚔️ 2026 Models](#-2026-model-landscape) • [🎭 PlayWhite](#-playwhite-workflow) • [Shortcuts](#-keyboard-shortcuts) • [Composer](#-composer-mode) • [MCP](#-mcp-integration) • [Enterprise](#-enterprise-features)
+[⚠️ Critical Bug](#-critical-zombie-revert-bug) • [🆕 Cursor 2.3](#-whats-new-in-cursor-23) • [⚔️ 2026 Models](#-2026-model-landscape) • [🎭 PlayWhite](#-playwhite-workflow) • [Shortcuts](#-keyboard-shortcuts) • [Composer](#-composer-mode) • [MCP](#-mcp-integration) • [Enterprise](#-enterprise-features) • [📅 Weekly Updates](docs/weekly-updates/)
 
 </div>
 
